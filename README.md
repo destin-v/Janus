@@ -126,9 +126,26 @@ permitted under these terms.
 On the basis of `Python >= 3.8` environment, install the necessary dependencies by running the following command:
 
 ```shell
+# Conda installs
+conda create -n janus python=3.10
+
+# We must have a matching cuda toolkit that is compiled with PyTorch.
+# Source: https://pytorch.org/get-started/previous-versions/
+conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.4 -c pytorch -c nvidia
+conda install -c conda-forge cudatoolkit-dev # nvcc
+
+# Pip installs
+pip install flash-attn # --no-build-isolation
 pip install -e .
 ```
 
+> [!WARNING]  
+> Verify installation is correct.
+
+```bash
+python -c "import torch; print(torch.cuda._is_compiled())" # must return True
+nvcc -V # must return info
+```
 
 ### Simple Inference Example
 
