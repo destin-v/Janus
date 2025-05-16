@@ -137,6 +137,8 @@ conda install -c conda-forge cudatoolkit-dev # nvcc
 # Pip installs
 pip install flash-attn # --no-build-isolation
 pip install -e .
+pip install gradio # dashboard
+pip install diffusers["torch"] transformers # needed for GUI
 ```
 
 > [!WARNING]  
